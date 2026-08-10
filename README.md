@@ -11,9 +11,11 @@ Single-page landing site for TrueTail natural dog and cat treats. Plain HTML/CSS
 - `script.js` - product cards, cart with localStorage, WhatsApp checkout
 - `images/` - brand imagery and crops
 
-## Editing prices and products
+## Editing products
 
-Open `script.js`. Prices per size are at the top in `SIZE_PRICES`; product names, descriptions and photos are in `PRODUCTS`. The WhatsApp number is in `WHATSAPP_NUMBER` (international format, no +).
+Open `script.js`. Product names, descriptions and photos are in `PRODUCTS`. The WhatsApp number is in `WHATSAPP_NUMBER` (international format, no +).
+
+Sizes and prices are not on the site yet. The cards show a "Sizes & pricing coming soon" pill, and the cart sends a WhatsApp message asking for sizes and prices. When the real pricing is ready, that is the part to replace.
 
 ## Run locally
 
@@ -23,17 +25,29 @@ python3 -m http.server 8123
 
 Then open http://localhost:8123
 
-## Deploy to GitHub Pages (moesb1)
+## Deploy
 
-1. Create an empty repo named `truetail` on github.com/moesb1 (public).
-2. From this folder:
+Live at https://truetail.co (GitHub Pages, repo `Moesb1/truetail`, branch `main`, root folder).
+
+To publish a change:
 
 ```
-git remote add origin https://github.com/moesb1/truetail.git
-git push -u origin main
+git add -A && git commit -m "your message" && git push
 ```
 
-3. On GitHub: repo Settings, then Pages, then Source: "Deploy from a branch", branch `main`, folder `/ (root)`. Save.
-4. Site goes live at https://moesb1.github.io/truetail/ within a minute or two.
+Pages rebuilds within a minute.
 
-To point `truetail.co` at it later: add the domain in the same Pages settings screen and create a CNAME record at your DNS host pointing to `moesb1.github.io`.
+The `CNAME` file holds the custom domain. Do not delete it: GitHub reads it on every build, and removing it unsets the domain.
+
+### DNS records for truetail.co
+
+Apex `truetail.co` needs four A records pointing at GitHub Pages:
+
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+And `www` as a CNAME to `moesb1.github.io`.

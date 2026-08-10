@@ -1,17 +1,6 @@
 /* ============ TrueTail store ============ */
 
-const WHATSAPP_NUMBER = "96170469078";
-
-/* Prices per size, in USD. Edit freely. */
-const SIZE_PRICES = {
-  "50g": 3.5,
-  "100g": 6,
-  "150g": 8,
-  "200g": 10,
-  "300g": 14,
-};
-const SIZES = Object.keys(SIZE_PRICES);
-const DEFAULT_SIZE = "200g";
+const WHATSAPP_NUMBER = "96179311378";
 
 const PRODUCTS = [
   {
@@ -45,34 +34,16 @@ PRODUCTS.forEach((p) => {
     <div class="product-body">
       <h3>${p.name}</h3>
       <p class="product-desc">${p.desc}</p>
-      <p class="size-label">Size</p>
-      <div class="size-row" role="group" aria-label="Choose size">
-        ${SIZES.map(
-          (s) =>
-            `<button class="size-pill${s === DEFAULT_SIZE ? " active" : ""}" data-size="${s}">${s}</button>`
-        ).join("")}
-      </div>
       <div class="product-foot">
-        <span class="product-price">$${SIZE_PRICES[DEFAULT_SIZE].toFixed(2)}</span>
+        <span class="soon-pill">Sizes &amp; pricing coming soon</span>
         <button class="add-btn">Add to Order</button>
       </div>
     </div>`;
 
-  const priceEl = card.querySelector(".product-price");
   const addBtn = card.querySelector(".add-btn");
-  let selectedSize = DEFAULT_SIZE;
-
-  card.querySelectorAll(".size-pill").forEach((pill) => {
-    pill.addEventListener("click", () => {
-      card.querySelector(".size-pill.active")?.classList.remove("active");
-      pill.classList.add("active");
-      selectedSize = pill.dataset.size;
-      priceEl.textContent = `$${SIZE_PRICES[selectedSize].toFixed(2)}`;
-    });
-  });
 
   addBtn.addEventListener("click", () => {
-    addToCart(p.id, selectedSize);
+    addToCart(p.id);
     addBtn.textContent = "Added ✓";
     addBtn.classList.add("added");
     setTimeout(() => {
@@ -87,7 +58,14 @@ PRODUCTS.forEach((p) => {
 /* ============ Cart state ============ */
 let cart = [];
 try {
-  cart = JSON.parse(localStorage.getItem("truetail-cart")) || [];
+  const saved = JSON.parse(localStorage.getItem("truetail-cart")) || [];
+  /* Older carts stored a size per line. Merge those into one line per product. */
+  saved.forEach((i) => {
+    if (!PRODUCTS.some((p) => p.id === i.id)) return;
+    const line = cart.find((c) => c.id === i.id);
+    if (line) line.qty += i.qty || 1;
+    else cart.push({ id: i.id, qty: i.qty || 1 });
+  });
 } catch (_) {
   cart = [];
 }
@@ -96,17 +74,17 @@ function saveCart() {
   localStorage.setItem("truetail-cart", JSON.stringify(cart));
 }
 
-function addToCart(productId, size) {
-  const existing = cart.find((i) => i.id === productId && i.size === size);
+function addToCart(productId) {
+  const existing = cart.find((i) => i.id === productId);
   if (existing) existing.qty += 1;
-  else cart.push({ id: productId, size, qty: 1 });
+  else cart.push({ id: productId, qty: 1 });
   saveCart();
   renderCart();
   bumpCount();
 }
 
-function changeQty(productId, size, delta) {
-  const item = cart.find((i) => i.id === productId && i.size === size);
+function changeQty(productId, delta) {
+  const item = cart.find((i) => i.id === productId);
   if (!item) return;
   item.qty += delta;
   if (item.qty <= 0) cart = cart.filter((i) => i !== item);
@@ -119,7 +97,6 @@ const cartDrawer = document.getElementById("cartDrawer");
 const cartOverlay = document.getElementById("cartOverlay");
 const cartItemsEl = document.getElementById("cartItems");
 const cartFoot = document.getElementById("cartFoot");
-const cartTotalEl = document.getElementById("cartTotal");
 const cartCountEl = document.getElementById("cartCount");
 const checkoutBtn = document.getElementById("checkoutBtn");
 
@@ -147,10 +124,6 @@ function bumpCount() {
   cartCountEl.classList.add("bump");
 }
 
-function cartTotal() {
-  return cart.reduce((sum, i) => sum + SIZE_PRICES[i.size] * i.qty, 0);
-}
-
 function renderCart() {
   const count = cart.reduce((n, i) => n + i.qty, 0);
   cartCountEl.textContent = count;
@@ -171,35 +144,31 @@ function renderCart() {
       <img src="${product.img}" alt="${product.name}">
       <div class="cart-item-info">
         <h4>${product.name}</h4>
-        <p>${item.size}</p>
         <div class="qty-row">
           <button class="qty-btn" data-act="dec" aria-label="Decrease">−</button>
           <span class="qty-val">${item.qty}</span>
           <button class="qty-btn" data-act="inc" aria-label="Increase">+</button>
         </div>
-      </div>
-      <span class="cart-item-price">$${(SIZE_PRICES[item.size] * item.qty).toFixed(2)}</span>`;
+      </div>`;
     row.querySelector('[data-act="dec"]').addEventListener("click", () =>
-      changeQty(item.id, item.size, -1)
+      changeQty(item.id, -1)
     );
     row.querySelector('[data-act="inc"]').addEventListener("click", () =>
-      changeQty(item.id, item.size, 1)
+      changeQty(item.id, 1)
     );
     cartItemsEl.appendChild(row);
   });
 
   cartFoot.hidden = false;
-  cartTotalEl.textContent = `$${cartTotal().toFixed(2)}`;
 
   const lines = cart.map((i) => {
     const p = PRODUCTS.find((pr) => pr.id === i.id);
-    return `- ${p.name} (${i.size}) x${i.qty} = $${(SIZE_PRICES[i.size] * i.qty).toFixed(2)}`;
+    return `- ${p.name} x${i.qty}`;
   });
   const msg = [
-    "Hello TrueTail! I would like to order:",
+    "Hello TrueTail! I am interested in ordering:",
     ...lines,
-    `Total: $${cartTotal().toFixed(2)}`,
-    "Payment: Whish Money / cash on delivery",
+    "Could you let me know the available sizes and prices?",
   ].join("\n");
   checkoutBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
