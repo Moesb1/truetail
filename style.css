@@ -476,3 +476,62 @@ section { padding: 90px 24px; }
   .hero-badge { left: 4px; padding: 11px 14px; font-size: 0.76rem; }
   .footer-inner { grid-template-columns: 1fr; gap: 36px; text-align: left; }
 }
+
+/* ============ Language switch ============ */
+.lang-btn {
+  background: transparent;
+  border: 1.5px solid var(--green);
+  color: var(--green);
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 9px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  min-width: 62px;
+}
+.lang-btn:hover { background: var(--green); color: var(--cream-light); }
+
+/* ============ Arabic ============ */
+[lang="ar"] {
+  --font-serif: "Amiri", "Playfair Display", Georgia, serif;
+  --font-sans: "Tajawal", "Nunito Sans", -apple-system, sans-serif;
+  --font-script: "Amiri", cursive;
+}
+/* Arabic script is cursive: letter-spacing breaks the joins between letters. */
+[lang="ar"] .section-eyebrow,
+[lang="ar"] .hero-eyebrow,
+[lang="ar"] .footer-tag,
+[lang="ar"] .soon-badge,
+[lang="ar"] .nav-links a,
+[lang="ar"] .btn,
+[lang="ar"] .lang-btn,
+[lang="ar"] .nav-cta { letter-spacing: normal; }
+
+[lang="ar"] .hero-script,
+[lang="ar"] .story-script { font-size: 1.35rem; transform: none; }
+[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3 { line-height: 1.35; }
+[lang="ar"] .hero h1 { font-size: clamp(2.3rem, 5vw, 3.8rem); }
+[lang="ar"] .footer-word { font-family: var(--font-serif); }
+
+/* Mirrored offsets that direction alone does not flip */
+[dir="rtl"] .hero-badge { left: auto; right: -14px; }
+[dir="rtl"] .nav-links a::after { left: auto; right: 0; }
+[dir="rtl"] .story-img img { transform: rotate(1.5deg); }
+
+@media (max-width: 640px) {
+  [dir="rtl"] .hero-badge { right: 4px; left: auto; }
+  .lang-btn { padding: 8px 12px; font-size: 0.76rem; min-width: 54px; }
+  /* The nav gets crowded on phones, and Contact is already in the menu and
+     the footer. Dropping it here also keeps Arabic from overflowing if the
+     webfont falls back to a wider face. */
+  .nav-cta { display: none; }
+}
+
+/* Latin contact details (phone, @handle, URL) must stay left-to-right even in
+   the Arabic layout, otherwise the "+" and "@" jump to the wrong end. */
+[dir="rtl"] .footer-col a[target="_blank"] {
+  direction: ltr;
+  justify-content: flex-end;
+}

@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,13 +24,14 @@
         <img src="images/logo.png" alt="TrueTail logo">
       </a>
       <nav class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#story">Our Story</a>
-        <a href="#treats">Treats</a>
-        <a href="#contact">Contact</a>
+        <a href="#home" data-i18n="nav.home">Home</a>
+        <a href="#story" data-i18n="nav.story">Our Story</a>
+        <a href="#treats" data-i18n="nav.treats">Treats</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
       <div class="nav-actions">
-        <a href="https://wa.me/96179311378" class="nav-cta" target="_blank" rel="noopener">Contact Us</a>
+        <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">عربي</button>
+        <a href="https://wa.me/96179311378" class="nav-cta" target="_blank" rel="noopener" data-i18n="nav.cta">Contact Us</a>
         <button class="menu-btn" id="menuBtn" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -41,14 +43,14 @@
   <section class="hero" id="home">
     <div class="hero-inner">
       <div class="hero-text reveal">
-        <p class="hero-eyebrow"><span class="paw-icon">🐾</span> Natural treats for dogs &amp; cats</p>
-        <h1>Real Ingredients.<br><em>True Love.</em></h1>
-        <p class="hero-sub">Premium natural treats crafted in small batches in Lebanon. No fillers, no artificial colors, no preservatives. Only real food your pets will love.</p>
+        <p class="hero-eyebrow" data-i18n="hero.eyebrow"><span class="paw-icon">🐾</span> Natural treats for dogs &amp; cats</p>
+        <h1 data-i18n="hero.h1">Real Ingredients.<br><em>True Love.</em></h1>
+        <p class="hero-sub" data-i18n="hero.sub">Premium natural treats crafted in small batches in Lebanon. No fillers, no artificial colors, no preservatives. Only real food your pets will love.</p>
         <div class="hero-cta">
-          <a href="#treats" class="btn btn-primary">What's Coming</a>
-          <a href="#story" class="btn btn-outline">Our Story</a>
+          <a href="#treats" class="btn btn-primary" data-i18n="hero.btn1">What's Coming</a>
+          <a href="#story" class="btn btn-outline" data-i18n="hero.btn2">Our Story</a>
         </div>
-        <p class="hero-script">Crafted with care, made with love.</p>
+        <p class="hero-script" data-i18n="hero.script">Crafted with care, made with love.</p>
       </div>
       <div class="hero-img reveal">
         <div class="hero-img-frame">
@@ -56,7 +58,7 @@
         </div>
         <div class="hero-badge">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.5 3.5-1.5 5-3 6.5C7 10 6 12 6 14a6 6 0 0 0 12 0c0-2-1-4-3-5.5C13.5 7 11.5 5.5 12 2z" opacity="0"/><path d="M12 3c1.7 0 4.5.7 6 3-1 .3-1.8.3-2.7.8C17 8.4 18 10.5 18 13a6 6 0 0 1-12 0c0-4.5 3-8.5 6-10z" opacity="0"/><path d="M11.9 8.9c1 0 1.9-1.2 1.9-2.5S12.9 4 11.9 4 10 5.2 10 6.4s.9 2.5 1.9 2.5zm-4.6.9c.9 0 1.7-1 1.7-2.2S8.2 5.4 7.3 5.4 5.6 6.4 5.6 7.6 6.4 9.8 7.3 9.8zm9.4 0c.9 0 1.7-1 1.7-2.2s-.8-2.2-1.7-2.2S15 6.4 15 7.6s.8 2.2 1.7 2.2zm-4.8 1.6c-2.3 0-4.7 2.5-4.7 4.7 0 1.5 1.1 2.5 2.4 2.5 1 0 1.6-.5 2.3-.5s1.3.5 2.3.5c1.3 0 2.4-1 2.4-2.5 0-2.2-2.4-4.7-4.7-4.7z"/></svg>
-          <span>100% Natural<br>Made in Lebanon</span>
+          <span data-i18n="hero.badge">100% Natural<br>Made in Lebanon</span>
         </div>
       </div>
     </div>
@@ -66,8 +68,8 @@
   <!-- ============ TREATS ============ -->
   <section class="treats" id="treats">
     <div class="section-head reveal">
-      <p class="section-eyebrow light">100% Natural. 100% Delicious.</p>
-      <h2>The <em>Treats</em></h2>
+      <p class="section-eyebrow light" data-i18n="treats.eyebrow">100% Natural. 100% Delicious.</p>
+      <h2 data-i18n="treats.h2">The <em>Treats</em></h2>
       <div class="head-rule"><span></span><svg viewBox="0 0 24 24" fill="currentColor" class="rule-paw"><path d="M11.9 8.9c1 0 1.9-1.2 1.9-2.5S12.9 4 11.9 4 10 5.2 10 6.4s.9 2.5 1.9 2.5zm-4.6.9c.9 0 1.7-1 1.7-2.2S8.2 5.4 7.3 5.4 5.6 6.4 5.6 7.6 6.4 9.8 7.3 9.8zm9.4 0c.9 0 1.7-1 1.7-2.2s-.8-2.2-1.7-2.2S15 6.4 15 7.6s.8 2.2 1.7 2.2zm-4.8 1.6c-2.3 0-4.7 2.5-4.7 4.7 0 1.5 1.1 2.5 2.4 2.5 1 0 1.6-.5 2.3-.5s1.3.5 2.3.5c1.3 0 2.4-1 2.4-2.5 0-2.2-2.4-4.7-4.7-4.7z"/></svg><span></span></div>
     </div>
 
@@ -76,13 +78,13 @@
         <img src="images/soon-pouches.jpg" alt="TrueTail treat pouches" loading="lazy">
       </div>
       <div class="soon-panel">
-        <span class="soon-badge">Coming Soon</span>
-        <h3>Our treats are almost ready</h3>
-        <p>We are putting the finishing touches on our recipes and packaging. Flavors, sizes and pricing will be announced here very soon.</p>
-        <p class="soon-strong">Want to be first to know? Message us and we will tell you the moment we launch.</p>
+        <span class="soon-badge" data-i18n="soon.badge">Coming Soon</span>
+        <h3 data-i18n="soon.h3">Our treats are almost ready</h3>
+        <p data-i18n="soon.p">We are putting the finishing touches on our recipes and packaging. Flavors, sizes and pricing will be announced here very soon.</p>
+        <p class="soon-strong" data-i18n="soon.strong">Want to be first to know? Message us and we will tell you the moment we launch.</p>
         <a href="https://wa.me/96179311378?text=Hi%20TrueTail!%20Please%20let%20me%20know%20when%20your%20treats%20launch." class="btn btn-whatsapp soon-btn" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          Message us on WhatsApp
+          <span data-i18n="soon.btn">Message us on WhatsApp</span>
         </a>
       </div>
     </div>
@@ -91,40 +93,40 @@
   <!-- ============ PROMISE ============ -->
   <section class="promise" id="promise">
     <div class="section-head reveal">
-      <p class="section-eyebrow">What we stand for</p>
-      <h2>Our <em>Promise</em></h2>
+      <p class="section-eyebrow" data-i18n="promise.eyebrow">What we stand for</p>
+      <h2 data-i18n="promise.h2">Our <em>Promise</em></h2>
       <div class="head-rule"><span></span><svg viewBox="0 0 24 24" fill="currentColor" class="rule-paw"><path d="M11.9 8.9c1 0 1.9-1.2 1.9-2.5S12.9 4 11.9 4 10 5.2 10 6.4s.9 2.5 1.9 2.5zm-4.6.9c.9 0 1.7-1 1.7-2.2S8.2 5.4 7.3 5.4 5.6 6.4 5.6 7.6 6.4 9.8 7.3 9.8zm9.4 0c.9 0 1.7-1 1.7-2.2s-.8-2.2-1.7-2.2S15 6.4 15 7.6s.8 2.2 1.7 2.2zm-4.8 1.6c-2.3 0-4.7 2.5-4.7 4.7 0 1.5 1.1 2.5 2.4 2.5 1 0 1.6-.5 2.3-.5s1.3.5 2.3.5c1.3 0 2.4-1 2.4-2.5 0-2.2-2.4-4.7-4.7-4.7z"/></svg><span></span></div>
     </div>
     <div class="promise-grid reveal">
       <div class="promise-item">
         <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
-        <h3>Natural Ingredients</h3>
-        <p>Real, wholesome ingredients you can recognize.</p>
+        <h3 data-i18n="p1t">Natural Ingredients</h3>
+        <p data-i18n="p1d">Real, wholesome ingredients you can recognize.</p>
       </div>
       <div class="promise-item">
         <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V2"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></div>
-        <h3>No Artificial Preservatives</h3>
-        <p>No artificial colors, flavors or preservatives. Ever.</p>
+        <h3 data-i18n="p2t">No Artificial Preservatives</h3>
+        <p data-i18n="p2d">No artificial colors, flavors or preservatives. Ever.</p>
       </div>
       <div class="promise-item">
         <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
-        <h3>Homemade Quality</h3>
-        <p>Carefully prepared in small batches with love.</p>
+        <h3 data-i18n="p3t">Homemade Quality</h3>
+        <p data-i18n="p3d">Carefully prepared in small batches with love.</p>
       </div>
       <div class="promise-item">
         <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M6 8c2-1.5 4-1.5 6 0s4 1.5 6 0"/><path d="M6 16c2 1.5 4 1.5 6 0s4-1.5 6 0"/><path d="m4.5 5.5 15 13"/></svg></div>
-        <h3>Grain Free</h3>
-        <p>Gentle recipes, easy on sensitive tummies.</p>
+        <h3 data-i18n="p4t">Grain Free</h3>
+        <p data-i18n="p4d">Gentle recipes, easy on sensitive tummies.</p>
       </div>
       <div class="promise-item">
         <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 7 9h3l-4 6h4l-3 5h10l-3-5h4l-4-6h3L12 2z"/><path d="M12 20v2"/></svg></div>
-        <h3>Made in Lebanon</h3>
-        <p>Proudly crafted in Lebanon. 🇱🇧</p>
+        <h3 data-i18n="p5t">Made in Lebanon</h3>
+        <p data-i18n="p5d">Proudly crafted in Lebanon. 🇱🇧</p>
       </div>
       <div class="promise-item">
         <div class="promise-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.9 8.9c1 0 1.9-1.2 1.9-2.5S12.9 4 11.9 4 10 5.2 10 6.4s.9 2.5 1.9 2.5zm-4.6.9c.9 0 1.7-1 1.7-2.2S8.2 5.4 7.3 5.4 5.6 6.4 5.6 7.6 6.4 9.8 7.3 9.8zm9.4 0c.9 0 1.7-1 1.7-2.2s-.8-2.2-1.7-2.2S15 6.4 15 7.6s.8 2.2 1.7 2.2zm-4.8 1.6c-2.3 0-4.7 2.5-4.7 4.7 0 1.5 1.1 2.5 2.4 2.5 1 0 1.6-.5 2.3-.5s1.3.5 2.3.5c1.3 0 2.4-1 2.4-2.5 0-2.2-2.4-4.7-4.7-4.7z"/></svg></div>
-        <h3>For Dogs &amp; Cats</h3>
-        <p>Delicious, healthy treats for your best friends.</p>
+        <h3 data-i18n="p6t">For Dogs &amp; Cats</h3>
+        <p data-i18n="p6d">Delicious, healthy treats for your best friends.</p>
       </div>
     </div>
   </section>
@@ -136,12 +138,12 @@
         <img src="images/story-photo.jpg" alt="Golden retriever puppy cuddling a grey kitten">
       </div>
       <div class="story-text reveal">
-        <p class="section-eyebrow">Our Story</p>
-        <h2>Every pet deserves treats you can <em>feel good</em> about giving.</h2>
-        <p>That is why we created TrueTail. A brand built around quality, honesty, and ingredients you can recognize. Every batch is prepared by hand in Lebanon, using real chicken, sweet potato, oats, and other simple ingredients. Nothing hidden, nothing artificial.</p>
-        <p>Because healthy pets deserve healthy rewards.</p>
-        <p class="story-script">Made with love for our true tail companions.</p>
-        <a href="#treats" class="btn btn-primary">Try the Treats</a>
+        <p class="section-eyebrow" data-i18n="story.eyebrow">Our Story</p>
+        <h2 data-i18n="story.h2">Every pet deserves treats you can <em>feel good</em> about giving.</h2>
+        <p data-i18n="story.p1">That is why we created TrueTail. A brand built around quality, honesty, and ingredients you can recognize. Every batch is prepared by hand in Lebanon, using real chicken, sweet potato, oats, and other simple ingredients. Nothing hidden, nothing artificial.</p>
+        <p data-i18n="story.p2">Because healthy pets deserve healthy rewards.</p>
+        <p class="story-script" data-i18n="story.script">Made with love for our true tail companions.</p>
+        <a href="#treats" class="btn btn-primary" data-i18n="story.btn">Try the Treats</a>
       </div>
     </div>
   </section>
@@ -152,16 +154,16 @@
       <div class="footer-brand">
         <img src="images/logo-mark.jpg" alt="TrueTail logo mark" class="footer-logo">
         <p class="footer-word">True<span>Tail</span></p>
-        <p class="footer-tag">Real Ingredients. True Love.</p>
+        <p class="footer-tag" data-i18n="footer.tag">Real Ingredients. True Love.</p>
       </div>
       <div class="footer-col">
-        <h4>Explore</h4>
-        <a href="#home">Home</a>
-        <a href="#story">Our Story</a>
-        <a href="#treats">Treats</a>
+        <h4 data-i18n="footer.explore">Explore</h4>
+        <a href="#home" data-i18n="nav.home">Home</a>
+        <a href="#story" data-i18n="nav.story">Our Story</a>
+        <a href="#treats" data-i18n="nav.treats">Treats</a>
       </div>
       <div class="footer-col">
-        <h4>Get in touch</h4>
+        <h4 data-i18n="footer.touch">Get in touch</h4>
         <a href="https://wa.me/96179311378" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
           +961 79 311 378
@@ -181,7 +183,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 TrueTail. Proudly made in Lebanon 🇱🇧</p>
+      <p data-i18n="footer.bottom">© 2026 TrueTail. Proudly made in Lebanon 🇱🇧</p>
     </div>
   </footer>
 
