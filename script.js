@@ -1,7 +1,15 @@
 /* ============ TrueTail ============ */
 
-/* Clear any order saved by the earlier version of the site. */
-localStorage.removeItem("truetail-cart");
+/* Storage throws in private mode and inside some in-app browsers (WhatsApp,
+   Instagram). Never let that take the whole script down. */
+function store(key, value) {
+  try {
+    if (value === undefined) return localStorage.getItem(key);
+    localStorage.setItem(key, value);
+  } catch (_) {}
+  return null;
+}
+try { localStorage.removeItem("truetail-cart"); } catch (_) {}
 
 /* ============ Arabic copy ============
    Keys match the data-i18n attributes in index.html. Values are HTML, so
@@ -77,7 +85,7 @@ function setLang(lang) {
   document.documentElement.lang = arabic ? "ar" : "en";
   document.documentElement.dir = arabic ? "rtl" : "ltr";
   langBtn.textContent = arabic ? "EN" : "عربي";
-  localStorage.setItem("truetail-lang", lang);
+  store("truetail-lang", lang);
 }
 
 /* ?lang=ar in the URL wins, so an Arabic link can be shared directly. */
@@ -85,7 +93,7 @@ const urlLang = new URLSearchParams(location.search).get("lang");
 setLang(
   urlLang === "ar" || urlLang === "en"
     ? urlLang
-    : localStorage.getItem("truetail-lang") === "ar"
+    : store("truetail-lang") === "ar"
       ? "ar"
       : "en"
 );
@@ -126,3 +134,14 @@ const observer = new IntersectionObserver(
   { threshold: 0.12 }
 );
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+/* Safety net: if the observer never fires (or an error stopped it), make sure
+   nothing stays invisible. */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.querySelectorAll(".reveal:not(.visible)").forEach((el) => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 1.5)
+        el.classList.add("visible");
+    });
+  }, 1200);
+});
