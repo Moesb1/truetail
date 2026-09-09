@@ -76,7 +76,7 @@ const AR = {
 
 /* ============ Order ============ */
 const PRICE = 5;
-const WHATSAPP = "96179411378";
+const WHATSAPP = "96179311378";
 const qtyVal = document.getElementById("qtyVal");
 const qtyTotal = document.getElementById("qtyTotal");
 const orderBtn = document.getElementById("orderBtn");
