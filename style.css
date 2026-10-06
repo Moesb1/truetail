@@ -323,6 +323,12 @@ section { padding: 90px 24px; }
 }
 .price-unit { color: rgba(237, 228, 208, 0.75); font-size: 0.95rem; }
 
+.product-min {
+  color: var(--gold-light);
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin: -12px 0 20px;
+}
 .qty-row {
   display: flex;
   align-items: center;

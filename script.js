@@ -41,6 +41,7 @@ const AR = {
   "prod.f3": "مخبوزة بالفرن",
   "prod.f4": "بلا مواد حافظة صناعية",
   "prod.unit": "للعلبة",
+  "prod.min": "الحد الأدنى للطلب 10$ (علبتان)",
   "prod.qty": "الكمية",
   "prod.order": "اطلب عبر واتساب",
   "prod.note": "نؤكّد كل طلب عبر واتساب. الدفع عبر Whish Money أو نقداً عند التسليم.",
@@ -76,11 +77,12 @@ const AR = {
 
 /* ============ Order ============ */
 const PRICE = 5;
+const MIN_QTY = 2; // minimum order is $10
 const WHATSAPP = "96179311378";
 const qtyVal = document.getElementById("qtyVal");
 const qtyTotal = document.getElementById("qtyTotal");
 const orderBtn = document.getElementById("orderBtn");
-let qty = 1;
+let qty = MIN_QTY;
 
 function renderOrder() {
   qtyVal.textContent = qty;
@@ -93,7 +95,7 @@ function renderOrder() {
 }
 
 document.getElementById("qtyMinus").addEventListener("click", () => {
-  if (qty > 1) qty--;
+  if (qty > MIN_QTY) qty--;
   renderOrder();
 });
 document.getElementById("qtyPlus").addEventListener("click", () => {
